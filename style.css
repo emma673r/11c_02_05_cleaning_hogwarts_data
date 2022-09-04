@@ -1,0 +1,21 @@
+#student_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.student_image {
+    border: 6px double goldenrod;
+    padding: 3px;
+}
+
+.single_student {
+    border:4px solid goldenrod;
+    padding: 5px 20px 5px 20px;
+    width: 50ch;
+}
+
+.single_student div {
+    box-sizing: content-box;
+}
