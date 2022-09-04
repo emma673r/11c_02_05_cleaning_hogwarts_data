@@ -62,33 +62,62 @@ function cleanStudentData() {
     const student = Object.create(Student);
     // ** make variables for each properties in (old) array
     // they are : fullname, gender and house
+    let fullName;
+    let gender;
+    let house;
 
     //* 3.1 trim each new let for whitespace (as a start - global thing to do)
+    // ! SHOULD ALL :  be lowercase as default and trim
+    fullName = elm.fullname.trim();
+    gender = elm.gender.trim();
+    house = elm.house.trim();
+
+    fullName = fullName.toLowerCase();
+    gender = gender.toLowerCase();
+    house = house.toLowerCase();
+
+    console.log(`fullName is _${fullName}_`);
+    console.log(`gender is _${gender}_`);
+    console.log(`house is _${house}_`);
+
+    // *make new array for all srtings in fullname
+    let fullNameString = fullName.split(" ");
+    console.log(fullNameString);
 
     //* 3.2 Find and set values for the object Student (specify steps)
     // ** 3.2.1 firstname
-    // ! SHOULD : first char uppercase, rest lowercase, trim
+    let firstName = fullNameString[0];
+    // ! SHOULD : first char uppercase
+    firstName = firstName[0].toUpperCase() + firstName.substring(1);
+    student.firstName = firstName;
+    console.log(firstName);
+    console.log(student);
 
     // ** 3.2.2 middleName
-    // ! SHOULD :
+    // ! SHOULD : first char uppercase
 
     // ** 3.2.3 nickName
-    // ! SHOULD :
+    // ! SHOULD : find string inside of "" and isolate
 
     // ** 3.2.4 lastName
-    // ! SHOULD : first char uppercase rest lowercase, trim
+    let lastName = fullNameString[fullNameString.length - 1];
+    console.log(lastName);
+    // ! SHOULD : first char uppercase
+    lastName = lastName[0].toUpperCase() + lastName.substring(1);
+    student.lastName = lastName;
+    console.log(student);
 
     // ** 3.2.5 gender
-    // ! SHOULD :
+    // ! SHOULD : first char uppercase
 
     // ** 3.2.6 imgSrc
-    // ! SHOULD :
+    // ! SHOULD : find from directory (.images/smthg) + make all to lowercase + make usre it ends with either .png or .jpg
 
     // ** 3.2.7 house
-    // ! SHOULD :
+    // ! SHOULD : first char uppercase
   });
 
-  //* PUSH each elm in new clean array :   allClanStudentList.push(elm)
+  //* PUSH each elm in new clean array :   allCleanStudentList.push(elm)
 }
 
 // ***** VIEW
