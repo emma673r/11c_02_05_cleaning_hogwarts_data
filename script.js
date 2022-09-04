@@ -10,7 +10,7 @@ const Student = {
   middleName: "unknow middle name",
   nickName: "unknown nick name",
   lastName: "",
-  imageSrc: "image.jpg",
+  imageSrc: "image.png",
   house: "",
 };
 
@@ -97,8 +97,7 @@ function cleanStudentData() {
     let indexOfFirst = fullName.indexOf(` `);
     let indexOfLast = fullName.lastIndexOf(` `);
 
-    let middleName = (fullName = fullName.substring(indexOfFirst, indexOfLast));
-
+    let middleName = fullName.substring(indexOfFirst, indexOfLast);
     // ! SHOULD : first char uppercase + display undefined if student doesnt have one
     // if middle name is empty display undefined middle name
     if (middleName === "") {
@@ -131,14 +130,34 @@ function cleanStudentData() {
     student.gender = gender;
     // console.log(student);
     // ** 3.2.6 imgSrc
-    // ! SHOULD : find from directory (.images/smthg) + make all to lowercase + make usre it ends with either .png or .jpg
+    let imgSrc;
+    // ! SHOULD : have the right name to fetch the right photo from right depository
+    //* look at images and student names - find a pattern
+    //* all images src have last name written, a _ and first letter firstname
+    //* exceptions are : Leanne and the Patils
 
+    // if student name has no last name - Leanne
+    if (!fullName.includes(" ")) {
+      imgSrc = `no image`;
+    }
+    // only 2 img src same last name - Patil (Parvati & Padma)
+    // so if student name includes patil
+    else if (fullName.toLowerCase().includes("patil")) {
+      imgSrc = `./images/${lastName.toLowerCase()}_${firstName.toLowerCase()}.png`;
+    }
+    // if student name has last name and first name and is only one with last name (the OG pattern)
+    else {
+      imgSrc = `./images/${fullName.substring(fullName.lastIndexOf(" ") + 1).toLowerCase()}_${student.firstName[0].toLowerCase()}.png`;
+    }
+
+    student.imgSrc = imgSrc;
+    
     // ** 3.2.7 house
     // ! SHOULD : first char uppercase
-        house = house[0].toUpperCase() + house.substring(1);
-        student.house = house;
-        
-        console.log(student);
+    house = house[0].toUpperCase() + house.substring(1);
+    student.house = house;
+
+    console.log(student);
   });
 
   //* PUSH each elm in new clean array :   allCleanStudentList.push(elm)
