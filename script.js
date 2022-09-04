@@ -121,9 +121,14 @@ function cleanStudentData() {
     // ** 3.2.4 lastName
     let lastName = fullNameArray[fullNameArray.length - 1];
     // console.log(lastName);
+    console.log(fullName.length);
     // ! SHOULD : first char uppercase
-    lastName = lastName[0].toUpperCase() + lastName.substring(1);
-    student.lastName = lastName;
+    if (fullName.length <= 6) {
+      student.lastName = `No last name known`;
+    } else {
+      lastName = lastName[0].toUpperCase() + lastName.substring(1);
+      student.lastName = lastName;
+    }
     // console.log(student);
 
     // ** 3.2.5 gender
@@ -140,7 +145,7 @@ function cleanStudentData() {
 
     // if student name has no last name - Leanne
     if (!fullName.includes(" ")) {
-      imgSrc = `no image`;
+      imgSrc = `no_image`;
     }
     // only 2 img src same last name - Patil (Parvati & Padma)
     // so if student name includes patil
