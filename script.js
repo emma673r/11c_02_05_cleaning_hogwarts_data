@@ -96,9 +96,9 @@ function cleanStudentData() {
     // ** 3.2.2 middleName
     let indexOfFirst = fullName.indexOf(` `);
     let indexOfLast = fullName.lastIndexOf(` `);
-
-    let middleName = fullName.substring(indexOfFirst, indexOfLast);
     // ! SHOULD : first char uppercase + display undefined if student doesnt have one
+    let middleName = fullName.substring(indexOfFirst, indexOfLast);
+
     // if middle name is empty display undefined middle name
     if (middleName === "") {
       student.middleName = "undefined middle name";
@@ -115,6 +115,14 @@ function cleanStudentData() {
     // console.log(student);
     // ** 3.2.3 nickName
     // ! SHOULD : find string inside of "" and isolate + display undefined if student doesnt have one
+    // only one student with nickname
+    // nickname displayed by putting it between ""
+
+    let nickName = fullName.substring(fullName.indexOf(`"`) + 1, fullName.lastIndexOf(`"`));
+    nickName = nickName.charAt(0).toUpperCase() + nickName.substring(1)
+    student.nickName = nickName;
+    // !somehow nickName[0] is not defined ???? dont understand
+
 
     // ** 3.2.4 lastName
     let lastName = fullNameArray[fullNameArray.length - 1];
@@ -151,7 +159,7 @@ function cleanStudentData() {
     }
 
     student.imgSrc = imgSrc;
-    
+
     // ** 3.2.7 house
     // ! SHOULD : first char uppercase
     house = house[0].toUpperCase() + house.substring(1);
